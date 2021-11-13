@@ -1,5 +1,41 @@
 # CaliCulator
 
+This application plans ahead training sessions for calistenics athletes.
+
+## Installation
+
+Apart from the regular Angular related stuff (listed below), one needs to create 'db.json' file in the project root folder in order to instatiate mock DB. The content of said file should be as follows:
+
+```json
+{
+  "endurance-training": [
+    {
+      "id": 1,
+      "restTime": "< 1min",
+      "reps": 25,
+      "sets": 40,
+      "volume": 1000
+    },
+    {
+      "id": 2,
+      "restTime": "< 1min",
+      "reps": 0,
+      "sets": 13,
+      "volume": 0
+    },
+    {
+      "id": 3,
+      "restTime": "< 2min",
+      "reps": 50,
+      "sets": 10,
+      "volume": 500
+    }
+  ]
+}
+```
+
+## Angular stuff
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
 ## Development server
