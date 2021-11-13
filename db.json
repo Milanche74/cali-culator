@@ -43,6 +43,52 @@
         "sets": 10,
         "volume": 260
       }
+    ],
+    [
+      {
+        "id": 1,
+        "restTime": "< 1min",
+        "reps": 4,
+        "sets": 40,
+        "volume": 160
+      },
+      {
+        "id": 2,
+        "restTime": "< 1min",
+        "reps": 6,
+        "sets": 13,
+        "volume": 78
+      },
+      {
+        "id": 3,
+        "restTime": "< 2min",
+        "reps": 12,
+        "sets": 10,
+        "volume": 80
+      },
+      [
+        {
+          "id": 1,
+          "restTime": "< 1min",
+          "reps": 13,
+          "sets": 40,
+          "volume": 500
+        },
+        {
+          "id": 2,
+          "restTime": "< 1min",
+          "reps": 20,
+          "sets": 13,
+          "volume": 260
+        },
+        {
+          "id": 3,
+          "restTime": "< 2min",
+          "reps": 40,
+          "sets": 10,
+          "volume": 260
+        }
+      ]
     ]
   ]
 }
