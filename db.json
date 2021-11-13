@@ -1,0 +1,25 @@
+{
+  "endurance-training": [
+    {
+      "id": 1,
+      "restTime": "< 1min",
+      "reps": 25,
+      "sets": 40,
+      "volume": 1000
+    },
+    {
+      "id": 2,
+      "restTime": "< 1min",
+      "reps": 0,
+      "sets": 13,
+      "volume": 0
+    },
+    {
+      "id": 3,
+      "restTime": "< 2min",
+      "reps": 50,
+      "sets": 10,
+      "volume": 500
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+:root {
+    --clr-light: rgba(255, 255, 255,0.7);
+    --clr-light-active: rgba(255,255,255,1);
+    --txt-dark: #0F2027;
+}
+
+app-root {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(0.375turn, #2C5364, #203A43 20%, #0F2027 60%,#09151a ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: grid;
+    grid-template-rows: 4fr 9fr 1fr;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+    align-items: center;
+    justify-content: center;
+    /* padding: 5vh 0 2vh 0 ; */
+    /* position: relative; */
+    font-family: 'Roboto Mono', monospace;
+}
+
+app-training-table,
+app-form {
+    grid-area: outlet;
+}
+
+app-training-table {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+

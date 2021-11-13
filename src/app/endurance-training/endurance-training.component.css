@@ -1,0 +1,131 @@
+.inquire {
+    display: flex;
+    flex: 7;
+    align-items: center;
+    width: 80vw;
+    margin-bottom: 3vh;
+    padding: 3vh ;
+    
+}
+
+.picker,
+.calculator {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 40vh;
+}
+
+.calculator {
+    margin-left: 0vw;
+}
+
+.inquire h3 {
+    color: var(--clr-light-active);
+    font-size: 1.375em;
+    flex: 1;
+    text-align: center;
+    /* min-height: 10vh; */
+    max-width: 30ch;
+    /* margin-top: 0; */
+    justify-self: start;
+    
+}
+
+
+
+
+.inquire .excercise-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 5;
+
+}
+
+.inquire li {
+    list-style: none;
+    color: var(--txt-dark);
+    background-color: var(--clr-light);
+    font-size: 1.125em;
+    text-align: center;
+    width: 16ch;
+    /* flex: 1 1 100%; */
+    padding: 0.25em 0.75em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5em 1em;
+}
+
+
+
+.inquire a button {
+    width: 20vw;
+    padding: 2vh;
+    font-size: 2em;
+    margin-top: 12vh;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    padding: 0.75em 1.25em;
+    background-color: var(--clr-light-active);
+}
+
+
+
+.inquire input {
+    font-size: 1.5em;
+    text-align: center;
+    outline: none;
+    margin-top: 3vh;
+    border-radius: 5px;
+    border: none;
+    flex: 2;
+    background-color: var(--clr-light);   
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inquire input:active,
+.inquire input:focus {
+    background-color: var(--clr-light-active);
+}
+
+.inquire li:hover,
+.inquire button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 1);
+}
+
+
+
+
+/* .inquire label {
+    color: rgb(255, 255, 255);
+    font-family: 'Roboto Mono', monospace;
+}
+.inquire>* {
+    margin-bottom: 3vh;
+}
+
+.inquire input,
+.inquire a  {
+    width: 50%;
+}
+.inquire input {
+    font-size: 1em;
+    font-family: 'Roboto Mono', monospace;
+    color: #0F2027;
+    text-align: center;
+}
+
+.inquire a button:hover {
+    background-color: rgba(255, 255, 255, 1);
+} */

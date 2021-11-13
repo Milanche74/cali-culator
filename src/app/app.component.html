@@ -1,0 +1,16 @@
+
+  <header>
+    <h1>{{title | uppercase}}</h1>
+    <h2>{{introduction}}</h2>
+  </header>
+  <main [ngClass]="{'main-active':active}"> 
+    <div [ngClass]= "{'training-goal': !active, 'training-goal-active': active}" >
+      <li  *ngFor="let goal of trainingGoals; let i = index" >
+        <a (click) = presentParams(goal) routerLink="form/{{goal.name}}" [ngClass] ="{'link-active': goal.state}">{{goal.name}}</a>
+      </li>
+    </div> 
+    <router-outlet></router-outlet>
+    
+  </main>
+  <footer><p> Milanche_74. All rigths reserved</p></footer>
+  

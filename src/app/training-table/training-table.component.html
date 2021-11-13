@@ -1,0 +1,48 @@
+
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">{{discipline}}</th>
+            <th scope="col">Sets</th>
+            <th scope="col">Reps</th>
+            <th scope="col">Rest time</th>
+            <th scope="col">Volume</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">#1</th>
+            <td>{{trainingPlan[0].sets}}</td>
+            <td>{{trainingPlan[0].reps}}</td>
+            <td>{{trainingPlan[0].restTime}}</td>
+            <td>{{trainingPlan[0].volume}}</td>
+        </tr>
+        <tr>
+            <th scope="row">#2</th>
+            <td>{{trainingPlan[1].sets}}</td>
+            <td>{{trainingPlan[1].reps}}</td>
+            <td>{{trainingPlan[1].restTime}}</td>
+            <td>{{trainingPlan[1].volume}}</td>
+        </tr>
+        <tr>
+            <th scope="row">#3</th>
+            <td>{{trainingPlan[2].sets}}</td>
+            <td>{{trainingPlan[2].reps}}</td>
+            <td>{{trainingPlan[2].restTime}}</td>
+            <td>{{trainingPlan[2].volume}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="buttons">
+    <div class="button-row1"> 
+        <button (click)="facilitateTraining(trainingPlan)">Facilitate</button>
+        <button (click)="aggravateTraining(trainingPlan)">Aggravate</button>
+    </div>   
+    <div class="button-row2">
+        <button (click)="saveTraining(trainingPlan)" [ngClass]="{'button-active':active}">Save</button>
+        <button (click)="clear()">Clear</button>
+    </div>
+    <button (click)="nextProgression(trainingPlan)">Next progression</button>
+</div>

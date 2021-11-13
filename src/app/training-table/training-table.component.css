@@ -1,0 +1,90 @@
+table {
+    margin-bottom: -2em;
+    border-collapse: separate;
+    border-spacing: .375em;
+}
+
+
+th, td, button:nth-child(3) {
+    font-size: 1.5em;
+    color: var(--txt-dark);
+    padding: 0.125rem 1rem;
+    text-align: center;
+    position: relative;
+    border-radius: 5px;
+}
+
+th {
+    background-color: var(--clr-light-active);
+}
+td {
+    background-color: var(--clr-light);
+}
+
+
+
+th:nth-child(1),
+td:nth-child(1) {
+    left: -.5em;
+}
+
+thead tr th {
+    top: -.5em;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    position: relative;
+    bottom: -.65em;
+    margin-left: 2vw;
+}
+.buttons button {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.25em;
+    width: 13ch;
+    background-color: var(--clr-light-active);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 1rem;
+    
+}
+button:first-of-type {
+    margin-right: .5rem;
+}
+.button-row1,
+.button-row2 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: .65em;
+    
+}
+
+button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 1);
+}
+
+.buttons button:nth-child(3) {
+    margin-top: 1em;
+    font-size: 1.5em;
+    width: min-content;
+    justify-self: end;
+}
+.buttons .button-active {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 1);
+}
+
+
+/* button + button {
+    margin-top: .275em;
+}  */
+ 
+/* .buttons button:last-of-type {
+    margin-top: .65em;
+} */
