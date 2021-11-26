@@ -33,6 +33,7 @@ Apart from the regular Angular related stuff (listed below), one needs to create
   ]
 }
 ```
+Json server is run using `npm run server` command.
 
 ## Angular stuff
 
