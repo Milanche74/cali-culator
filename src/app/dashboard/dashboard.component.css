@@ -1,0 +1,33 @@
+
+
+button,p {
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: var(--fts-med);
+    font-weight: 700;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    color: var(--clr-dark);
+    background-color: var(--clr-light);
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--clr-light-active);
+}
+
+p {
+    color:  var(--clr-light);
+}
+

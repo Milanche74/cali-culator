@@ -1,0 +1,108 @@
+
+
+
+main,
+.main-active {
+    width: 80vw; 
+    padding: 0vh 0 0vh 0;
+    grid-area: main;
+    align-self: center;
+
+}
+nav {
+    grid-area: navbar;
+}
+.training-goal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+    max-height: 60vh;
+    min-width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 1s ease;
+    
+}
+.training-goal li,
+.training-goal-active li {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
+}
+
+
+
+.training-goal-active {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    position: relative;
+    /* grid-area: tabs;     */
+}
+
+
+.training-goal a,
+.training-goal-active a {
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* text-align: center; */
+    font-size: 1.5em;
+    letter-spacing: 0.075em;
+    cursor: pointer;
+    color: #0F2027;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 3vh 3vw;
+    border-radius: 10px;
+    inset: 0;
+    
+}
+.training-goal-active a {
+    padding: 0vh 1vw;
+    flex: 1;
+}
+
+li + li {
+    margin-top: 5vh;
+}
+
+.training-goal a:hover,
+.training-goal-active a:hover {
+    background-color: rgba(255, 255, 255, 1);
+    
+}
+
+.training-goal + * {
+    margin-top: 5vh;
+}
+
+
+.training-goal-active li + li {
+    margin-left: 4vw;
+}
+.training-goal-active a {
+    padding: 3vh auto;
+    text-align: center;
+}
+.training-goal-active li + li {
+    margin-top: 0;
+}
+
+.training-goal-active .link-active {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1),
+                0 0 20px rgba(255, 255, 255, 1);
+    /* border-bottom: 5vh solid rgb(255, 255, 255);
+    margin-bottom: -5vh; */
+                
+}

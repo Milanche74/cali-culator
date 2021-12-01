@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { TrainingTableComponent } from './training-table/training-table.component';
 import { FormComponent } from './form/form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -17,7 +19,9 @@ import { FormComponent } from './form/form.component';
     AppComponent,
     MessageComponent,
     TrainingTableComponent,
-    FormComponent
+    FormComponent,
+    DashboardComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

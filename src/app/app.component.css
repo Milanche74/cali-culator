@@ -32,116 +32,24 @@ h1 {
     /* margin-bottom: 3vh; */
 }
 
-main,
-.main-active {
-    width: 80vw;
-    grid-area: main;
-    display: grid;
-    padding: 0vh 0 0vh 0;
-    
-
-}
-.main-active {
-    grid-template-rows: 1fr 7fr;
-    grid-template-areas: 
-    "navbar"
-    "outlet";
-    align-items: center;
-    
-} 
 
 
-.training-goal {
-    /* width: 60vw; */
-    min-height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    transition: all 1s ease;
-    
-}
-.training-goal li,
-.training-goal-active li {
-    list-style: none;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-    
-}
-
-.training-goal-active {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 80vw;
-    position: relative;
-    grid-area: navbar;
-   
-  
-    
-}
-
-.training-goal a,
-.training-goal-active a {
-    text-decoration: none;
-    font-weight: 900;
-    text-transform: uppercase;
-    /* text-align: center; */
-    font-size: 1.5em;
-    letter-spacing: 0.075em;
-   
-    color: #0F2027;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 3vh 3vw;
-    border-radius: 10px;
-    inset: 0;
-    
-}
-.training-goal-active a {
-    padding: 1vh 1vw;
-    flex: 1;
-}
-
-li + li {
-    margin-top: 5vh;
-}
-
-.training-goal a:hover,
-.training-goal-active a:hover {
-    background-color: rgba(255, 255, 255, 1);
-    
-}
-
-.training-goal + * {
-    margin-top: 5vh;
-}
-
-
-.training-goal-active li + li {
-    margin-left: 4vw;
-}
-.training-goal-active a {
+/* .link-active::after {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0;
     width: 24vw;
-    padding: 3vh auto;
-    text-align: center;
-}
-.training-goal-active li + li {
-    margin-top: 0;
-}
+    height: 10vh;
+    
+    background: linear-gradient(to bottom, rgb(255,255,255), transparent);
+  
+} */
 
-.training-goal-active .link-active {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 1),
-                0 0 20px rgba(255, 255, 255, 1);
-                
-}
 
 footer{
     grid-area: footer;
+    align-self: end;
     display: flex;
     justify-content: center;
     /* position: relative;

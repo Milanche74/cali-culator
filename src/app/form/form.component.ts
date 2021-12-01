@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
   parameter = '';
   faCalculator = faCalculator;
   excercises: any = [];
-  goal: any = ''; 
+  goal: string = ''; 
   // this.route.snapshot.paramMap.get('name');
   public trainingPlan: Training[] =  [];
 
@@ -35,10 +35,10 @@ export class FormComponent implements OnInit {
       this.parameter = 'number of max reps';
     } else if(goal === 'static holds'){
       this.excercises = [];
-      this.parameter = 'max hold time'
+      this.parameter = 'max hold time in seconds'
     } else if (goal==='street lifting') {
       this.excercises = [];
-      this.parameter = 'max weight as ORM'
+      this.parameter = 'max weight as ORM in KGs'
     } else {
       return
     };
@@ -56,21 +56,14 @@ export class FormComponent implements OnInit {
     
     
   }
+  getMarkerPosition(goal: string | null): any {
+    switch(goal) {
+      case 'reps': return '13%';
+      case 'static holds': return '48%';
+      case 'street lifting': return '83%';
+    }
   
-  
-  
-  //     this.excercises = DISCIPLINES[0].filter(discipline => discipline.aux);
-  
-  
-      // getEnduranceTraining() {
-      //   this.calculator.getEnduranceTraining()
-      //     .subscribe(training => this.EnduranceTraining = training);
-      // }
-
-      // calculateEnduranceTraining(maxReps: any, EnduranceTraining: Training[]) {
-      //   this.calculator.calculateEnduranceTraining(maxReps, EnduranceTraining)
-
-      // }
+  }
 
   
   

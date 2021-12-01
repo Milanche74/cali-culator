@@ -3,7 +3,9 @@
     flex: 7;
     align-items: center;
     width: 80vw;
-    
+    position: relative;
+    background:linear-gradient(to bottom, rgba(255,255,255, 0.1) 7%, transparent );
+    border-radius: 10px;  
     
 }
 
@@ -127,7 +129,8 @@ input::-webkit-inner-spin-button {
 
 .inquire .excercise-list li input:checked + label,
 .inquire .calculator button:hover,
-.inquire .calculator input:valid {
+.inquire .calculator input:valid,
+.marker {
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 10px rgba(255, 255, 255, 1),
     0 0 20px rgba(255, 255, 255, 1);
@@ -135,12 +138,19 @@ input::-webkit-inner-spin-button {
 
 span {
     position: absolute;
-    top: 20vh;
-    right: 5vw;
     font-size: 1.125em;
     color: var(--clr-light-active);
 }
 
+.marker {
+    position: absolute;
+    top: -.5vh;
+    
+    width: 40px;
+    height: 1vh;
+    border-radius: 100vh;
+    transition: all ease-out .25s;
+}
 
 
 

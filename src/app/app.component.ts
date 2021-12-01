@@ -1,33 +1,50 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RoutesRecognized} from '@angular/router';
+import { filter, pairwise } from 'rxjs/operators';
+import { LoaderService } from './loader.service';
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.component.html', 
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'caliculator';
   introduction = 'Organize your training'; 
+  public previousUrl: string = '';
+  public currentUrl: string = '';
 
-  // trainingGoals: string[] = ['reps', 'static holds', 'street lifting'];
-  trainingGoals: any[] = [{name: 'reps', state: false}, {name: 'static holds', state: false}, {name: 'street lifting', state: false}];
+  
+  constructor(
+    private router:Router,
+    private loader: LoaderService) {
 
-  active: boolean = false;
+    this.router.events
+    .pipe(filter((evt:any)=>evt instanceof RoutesRecognized || evt instanceof NavigationEnd ), pairwise())
+    .subscribe((events: RoutesRecognized[]) => {
+      this.previousUrl = events[0].urlAfterRedirects; 
+      this.currentUrl = events[1].urlAfterRedirects; 
+      this.loader.getPreviousUrl(this.previousUrl, this.currentUrl);
+    })
 
-  presentParams(goal:any):void {
-    //make sure inactive goal's states are false
-    for(let i = 0; i < this.trainingGoals.length; i++) {
-      this.trainingGoals[i].state = false;
-    }
-    //change clicked goal state
-    goal.state = true; 
+    this.router.events
+    .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
+    .subscribe(event => {
+      if(
+        event.id === 1 &&
+        event.url === event.urlAfterRedirects
+      ) {
+        this.router.navigate(['/'])
+      }
+    })
+  }
 
-    //change navbar state
-    this.active = true;
+  
 
     
 
-  }
+
 
   
 }

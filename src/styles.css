@@ -9,6 +9,9 @@ body {
     --clr-light: rgba(255, 255, 255,0.7);
     --clr-light-active: rgba(255,255,255,1);
     --txt-dark: #0F2027;
+
+    --fts-large: 4em;
+    --fts-med:1.5em
 }
 
 app-root {
@@ -19,21 +22,21 @@ app-root {
     background: #0F2027;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(0.375turn, #2C5364, #203A43 20%, #0F2027 60%,#09151a ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
     display: grid;
-    grid-template-rows: 4fr 9fr 1fr;
+    gap: .5em;
+    grid-template-rows: 2fr 6fr 1fr;
     grid-template-areas: 
     "header"
-    "main"
+    "outlet"
     "footer";
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    /* padding: 5vh 0 2vh 0 ; */
-    /* position: relative; */
+    padding-top: 1em;
     font-family: 'Roboto Mono', monospace;
 }
 
-app-training-table,
-app-form {
+app-dashboard, app-main {
     grid-area: outlet;
 }
 
@@ -44,4 +47,22 @@ app-training-table {
     
 }
 
+app-dashboard {
+  
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+app-main {
+    
+    display: grid;
+    gap: 2em;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: 
+    "navbar"
+    "main";
+}
 

@@ -1,5 +1,6 @@
 export interface Training {
     id: number;
+    excercise: string;
     restTime: string;
     reps: number;
     sets: number;

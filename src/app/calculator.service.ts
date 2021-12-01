@@ -12,8 +12,8 @@ export class CalculatorService {
   private enduranceTrainingUrl = 'http://localhost:5000/endurance-training';
   private staticHoldsTrainingUrl = 'http://localhost:5000/static-holds-training';
   private streetLiftingTrainingUrl = 'http://localhost:5000/street-lifting-training';
+  private savedTrainingsUrl = 'http://localhost:5000/saved-trainings';
   public trainingPlan: Training[] = [];
-  public discipline = '';
   public goal:any = '';
   
   httpOptions = {
@@ -40,11 +40,13 @@ export class CalculatorService {
       this.trainingPlan[2].reps = this.trainingPlan[0].reps * 2;
       this.trainingPlan[2].volume = this.trainingPlan[2].reps * this.trainingPlan[2].sets;
   
-      this.discipline = formValue.option;
+      for(let i=0; i< this.trainingPlan.length; i++) {
+        this.trainingPlan[i].excercise = formValue.option;
+      }
 
       this.goal = 'reps';
       
-      this.router.navigate(['training-table'])
+      this.router.navigate(['main/training-table/new'])
       
       });
     return this.trainingPlan;
@@ -88,7 +90,7 @@ export class CalculatorService {
 
   }
   saveTraining(training:Training[]) {
-    return this.http.post(this.enduranceTrainingUrl, training, this.httpOptions);
+    return this.http.post(this.savedTrainingsUrl, {data: training}, this.httpOptions);
     
     
   }
