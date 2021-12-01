@@ -19,6 +19,8 @@ export class MainComponent implements OnInit {
   trainingPlan: Training[] = [];
   index: number = 0;
   currentExcercise: string|null = '';
+  tabActive:string = '';
+  tabsInitial:string[] = [];
 
   
   openTab(tab:string): void {
@@ -31,6 +33,13 @@ export class MainComponent implements OnInit {
       this.trainingPlan = this.trainingsArray[this.index].data;    
       this.router.navigate([`main/training-table/${tab}`], {state: {data: this.trainingPlan}});
       console.log(this.trainingPlan);
+      this.tabActive = tab;
+
+      if(this.tabs.length > 4) {
+
+        this.tabs = this.tabs.slice(0,3);
+
+      }
       
     }
     
@@ -53,18 +62,25 @@ export class MainComponent implements OnInit {
       this.loader.presentCategories()
       .subscribe(categories => this.tabs = categories)
     } else {
-      this.loader.getSavedTrainings()
+      this.loader.getSavedTrainings() 
       .subscribe(training => {
         console.log(training);
         this.trainingsArray = training;
         for(let i = 0; i < training.length; i++) {
           
-          this.tabs.push(training[i].data[0].excercise)
+          this.tabs.push(training[i].data[0].excercise);
         }
-            
+        this.tabsInitial = this.tabs;           
 
       })
     }
+  }
+
+  showSavedTrainings() {
+    this.active = false;
+    this.tabs = this.tabsInitial;
+    this.router.navigate(['main']);
+    
   }
   
 

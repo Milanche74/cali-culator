@@ -4,7 +4,7 @@
 
 <form #userForm="ngForm" class="inquire">
     <div class="picker">   
-        <h3>Choose a discipline</h3>
+        <h3>Choose a discipline <span *ngIf="goal==='street lifting'">done with additional weight</span> </h3>
         <div class="excercise-list">
             <li  *ngFor='let discipline of excercises; let i = index'>
                 <input ngModel id="disc" type="radio" name="option" value="{{discipline.name}}"   />

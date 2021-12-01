@@ -34,10 +34,11 @@ export class FormComponent implements OnInit {
       this.excercises = DISCIPLINES[0].filter(discipline => !discipline.aux);
       this.parameter = 'number of max reps';
     } else if(goal === 'static holds'){
-      this.excercises = [];
+      this.excercises = DISCIPLINES[1].filter(discipline => !discipline.aux);
       this.parameter = 'max hold time in seconds'
     } else if (goal==='street lifting') {
-      this.excercises = [];
+      this.excercises = DISCIPLINES[0].filter(discipline => !discipline.aux);
+      this.excercises.name = `Weighted ${this.excercises.name}`;
       this.parameter = 'max weight as ORM in KGs'
     } else {
       return

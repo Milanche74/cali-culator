@@ -31,26 +31,9 @@ export class TrainingTableComponent implements OnInit {
     public route:ActivatedRoute) { }
 
   ngOnInit(): any {
-    // this.previousUrl = this.loader.previousUrl;
-    // console.log(this.previousUrl);
 
     if(!this.loader.checkIfTabsAreCategories) {
       console.log(history.state.data)
-      // this.loader.getSavedTrainings()
-      // .subscribe(training => {
-      //   this.trainingPlan = training[0];
-      //   this.savedTrainings = training;});
-      // this.currentExcercise = this.route.snapshot.paramMap.get('name');
-      
-      // this.trainingsArray = history.state.data;
-      // console.log(this.trainingsArray[0].data[0].excercise);
-      // let tabs: any[]= [];
-      // for(let i = 0; i < this.trainingsArray.length; i++) {
-        
-      //   tabs.push(this.trainingsArray[i].data[0].excercise)
-      //   }
-
-      // this.index = tabs.indexOf(this.currentExcercise);
       this.trainingPlan = history.state.data;
      
       
@@ -63,9 +46,11 @@ export class TrainingTableComponent implements OnInit {
   }
 
   ngDoCheck() {
-    let excercise = this.route.snapshot.paramMap.get('name');
-    if( excercise !== this.loader.previousUrl) {
+    if(!this.loader.checkIfTabsAreCategories) { 
+      let excercise = this.route.snapshot.paramMap.get('name');
+      if( excercise !== this.loader.previousUrl) {
       this.trainingPlan = history.state.data;
+      }
     }
   }
 

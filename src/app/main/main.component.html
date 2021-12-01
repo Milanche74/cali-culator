@@ -7,9 +7,10 @@
          routerLink="form/{{tab}}" routerLinkActive = "link-active">{{tab}}
         </a>
         <a *ngIf = "!tabsAsCategories" (click)="openTab(tab)"
-          routerLinkActive = "link-active">{{tab}}
+          [ngClass] = "{'link-active': tab === tabActive}">{{tab}}
         </a>
     </li>
+    <li *ngIf="tabsInitial.length > 4 && active" (click)="showSavedTrainings()"><a>+{{tabsInitial.length - 3}} More</a></li>
 </nav>
 
 <main [ngClass]="{'main-active':active}"> 
