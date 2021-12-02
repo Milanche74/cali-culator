@@ -1,6 +1,6 @@
 # CaliCulator
 
-This application plans ahead training sessions for calistenics athletes.
+This application plans ahead training sessions for calisthenics athletes.
 
 ## Installation
 
@@ -8,13 +8,18 @@ Apart from the regular Angular related stuff (listed below), one needs to create
 
 ```json
 {
+  "categories": [
+    "reps",
+    "static holds",
+    "street lifting"
+  ],
   "endurance-training": [
     {
       "id": 1,
       "restTime": "< 1min",
-      "reps": 25,
+      "reps": 0,
       "sets": 40,
-      "volume": 1000
+      "volume": 0
     },
     {
       "id": 2,
@@ -26,9 +31,127 @@ Apart from the regular Angular related stuff (listed below), one needs to create
     {
       "id": 3,
       "restTime": "< 2min",
-      "reps": 50,
+      "reps": 0,
       "sets": 10,
-      "volume": 500
+      "volume": 0
+    }
+  ],
+  "saved-trainings": [
+    {
+      "id": 1,
+      "data": [
+        {
+          "id": 1,
+          "restTime": "< 1min",
+          "reps": 9,
+          "sets": 40,
+          "volume": 340,
+          "excercise": "Dips"
+        },
+        {
+          "id": 2,
+          "restTime": "< 1min",
+          "reps": 14,
+          "sets": 13,
+          "volume": 182,
+          "excercise": "Dips"
+        },
+        {
+          "id": 3,
+          "restTime": "< 2min",
+          "reps": 18,
+          "sets": 10,
+          "volume": 180,
+          "excercise": "Dips"
+        }
+      ]
+    },
+    {
+      "data": [
+        {
+          "id": 1,
+          "restTime": "< 1min",
+          "reps": 3,
+          "sets": 40,
+          "volume": 120,
+          "excercise": "Pull-ups"
+        },
+        {
+          "id": 2,
+          "restTime": "< 1min",
+          "reps": 5,
+          "sets": 13,
+          "volume": 65,
+          "excercise": "Pull-ups"
+        },
+        {
+          "id": 3,
+          "restTime": "< 2min",
+          "reps": 6,
+          "sets": 10,
+          "volume": 60,
+          "excercise": "Pull-ups"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "data": [
+        {
+          "id": 1,
+          "restTime": "< 1min",
+          "reps": 8,
+          "sets": 40,
+          "volume": 300,
+          "excercise": "Squats"
+        },
+        {
+          "id": 2,
+          "restTime": "< 1min",
+          "reps": 12,
+          "sets": 13,
+          "volume": 156,
+          "excercise": "Squats"
+        },
+        {
+          "id": 3,
+          "restTime": "< 2min",
+          "reps": 16,
+          "sets": 10,
+          "volume": 160,
+          "excercise": "Squats"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "data": [
+        {
+          "id": 1,
+          "restTime": "< 1min",
+          "reps": 10,
+          "sets": 40,
+          "volume": 400,
+          "excercise": "Push-ups"
+        },
+        {
+          "id": 2,
+          "restTime": "< 1min",
+          "reps": 15,
+          "sets": 13,
+          "volume": 195,
+          "excercise": "Push-ups"
+        },
+        {
+          "id": 3,
+          "restTime": "< 2min",
+          "reps": 20,
+          "sets": 10,
+          "volume": 200,
+          "excercise": "Push-ups"
+        }
+      ],
+      "id": 4
     }
   ]
 }
@@ -58,6 +181,16 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
+## Future updates
+
+- Improve algorithm for static and strength training;
+- Make specific training calculations for form values that are lower then 10 and higher then 50;
+- Find a solution for reload bug (loosing data fetched from server);
+- Add navigation: loader and calculator;
+- If user saves training session of the excercise that already exist on the server, replace it with the new one;
+- Unsubscribe from Observables;
+- Implement form validation & error handling.
 
 ## Further help
 
