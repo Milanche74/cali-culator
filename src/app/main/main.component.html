@@ -1,12 +1,12 @@
 
 
 
-<nav [ngClass]= "{'training-goal': !active, 'training-goal-active': active}">
+<nav [ngClass]= "{'training-goal': !active, 'training-goal-active': active}"> 
     <li  *ngFor="let tab of tabs; let i = index" >
-        <a *ngIf = "tabsAsCategories" (click)="openTab(tab)"
+        <a *ngIf = "currentUrl === '/main/calculate'" (click)="openTab(tab)"
          routerLink="form/{{tab}}" routerLinkActive = "link-active">{{tab}}
         </a>
-        <a *ngIf = "!tabsAsCategories" (click)="openTab(tab)"
+        <a *ngIf = "currentUrl === '/main/loader'" (click)="openTab(tab)"
           [ngClass] = "{'link-active': tab === tabActive}">{{tab}}
         </a>
     </li>

@@ -14,6 +14,10 @@ body {
     --fts-med:1.5em
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 app-root {
     box-sizing: border-box;
     width: 100%;
@@ -45,6 +49,7 @@ app-training-table {
     align-items: center;
     justify-content: space-evenly;
     
+    
 }
 
 app-dashboard {
@@ -65,4 +70,5 @@ app-main {
     "navbar"
     "main";
 }
+
 

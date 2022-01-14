@@ -8,7 +8,12 @@ import { TrainingTableComponent } from './training-table/training-table.componen
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
-  {path: 'main', component: MainComponent,
+  {path: 'main/loader', component: MainComponent,
+     children: [
+      {path: 'training-table/:name', component: TrainingTableComponent}
+     ]
+  },
+  {path: 'main/calculate', component: MainComponent,
      children: [
       {path: 'form/:name', component: FormComponent},
       {path: 'training-table/:name', component: TrainingTableComponent}

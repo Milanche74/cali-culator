@@ -2,22 +2,36 @@
 
 
 
-<form #userForm="ngForm" class="inquire">
+<form [formGroup]="trainingForm" (ngSubmit)="onSubmit()" class="inquire"> 
     <div class="picker">   
         <h3>Choose a discipline <span *ngIf="goal==='street lifting'">done with additional weight</span> </h3>
         <div class="excercise-list">
             <li  *ngFor='let discipline of excercises; let i = index'>
-                <input ngModel id="disc" type="radio" name="option" value="{{discipline.name}}"   />
-                <label for="disc">{{discipline.name}}</label>
-            </li>
+                <input formControlName="formOption" id="disc" type="radio" name="formOption" value="{{discipline.name}}" required   />
+                <label for="disc">{{discipline.name}}</label>              
+            </li>            
+        </div>
+        <!-- form validation -->
+        <div *ngIf="(formOption.invalid && (formOption.dirty || formOption.touched)) || formOption.invalid && formInvalid">
+            <div *ngIf="formOption.errors?.['required']" class="error">
+            Please select a discipline</div>
         </div>
 
     </div> 
     <div class="calculator">
         <h3><label for="quantity">Enter {{parameter}} for chosen discipline</label></h3>
-        <input ngModel type="number" id="maxReps" name="maxNumber" required max="100"  />
+        <input type="number" id="maxReps" name="formNumber" formControlName="formNumber" required max="100" min="1"  />
         <!-- <span *ngIf="goal==='street lifting'">Kg</span><span *ngIf="goal==='static holds'">Sec</span> -->
-        <button (click) = "calculateTraining(userForm.value)"><fa-icon [icon]="faCalculator"></fa-icon>
+        
+        <!-- form validation -->
+        <div *ngIf="(formNumber.invalid && (formNumber.dirty || formNumber.touched)) || formNumber.invalid && formInvalid">
+            <div *ngIf="formNumber.errors?.['min'] || formNumber.errors?.['max']" class="error">
+            Number must be a value between 1 & 100</div>
+            <div  *ngIf="formNumber.errors?.['required']" class="error">
+            Please input a value</div>
+        </div>
+
+        <button type="submit" class="form-submit"><fa-icon [icon]="faCalculator"></fa-icon>
         </button>
         
     </div>

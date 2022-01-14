@@ -31,9 +31,9 @@ export class TrainingTableComponent implements OnInit {
     public route:ActivatedRoute) { }
 
   ngOnInit(): any {
-
-    if(!this.loader.checkIfTabsAreCategories) {
-      console.log(history.state.data)
+    
+    if(this.loader.urlHasLoader) {
+      // console.log(history.state.data)
       this.trainingPlan = history.state.data;
      
       
@@ -41,12 +41,12 @@ export class TrainingTableComponent implements OnInit {
       this.loger()
       this.trainingPlan = this.calculator.trainingPlan;
       this.goal = this.calculator.goal;
-      console.log(this.goal);
+      // console.log(this.goal);
     }  
   }
 
   ngDoCheck() {
-    if(!this.loader.checkIfTabsAreCategories) { 
+    if(this.loader.urlHasLoader) { 
       let excercise = this.route.snapshot.paramMap.get('name');
       if( excercise !== this.loader.previousUrl) {
       this.trainingPlan = history.state.data;
@@ -62,7 +62,7 @@ export class TrainingTableComponent implements OnInit {
 
   aggravateTraining(training:Training[]) {
     // if(this.goal === 'reps') {}
-      this.trainingPlan= this.calculator.aggravateEnduranceTraining(training);
+      this.trainingPlan  = this.calculator.aggravateEnduranceTraining(training);
     
   }
 
@@ -70,7 +70,7 @@ export class TrainingTableComponent implements OnInit {
     // if(this.goal === 'reps') {}
       this.trainingPlan= this.calculator.progressionEnduranceTraining(training);
     
-    this.active=false;
+    this.active = false;
   }
 
   clear() {
@@ -78,8 +78,42 @@ export class TrainingTableComponent implements OnInit {
   }
 
   saveTraining(training:Training[]) {
-    this.calculator.saveTraining(training)
+    
+    let indexOfSameTraining:number|null = null; 
+    
+
+    this.loader.getSavedTrainings().
+       subscribe( trainings => {
+        trainings = trainings;
+        for(let i = 0; i < trainings.length; i++) {
+          console.log(trainings[i].data[0].excercise);
+          console.log(training[0].excercise);
+          if(trainings[i].data[0].excercise === training[0].excercise ) {
+            
+            indexOfSameTraining = trainings[i].id;
+            
+          }
+        }
+        console.log(indexOfSameTraining)
+        
+        if(indexOfSameTraining) {
+          this.updateTraining(training, indexOfSameTraining);
+        } else {
+          this.saveNewTraining(training);
+        }
+        
+      })
+    
+  }
+
+  updateTraining(training:Training[], index:number) {
+    this.calculator.updateTraining(training, index).subscribe(training => {console.log(training); this.active = true});
+  }
+
+  saveNewTraining(training:Training[]) {
+    this.calculator.saveNewTraining(training) 
     .subscribe(training => {console.log(training); this.active = true});
+    
   }
 
   loger() {

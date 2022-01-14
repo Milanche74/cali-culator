@@ -2,11 +2,26 @@
   <header>
     <h1>{{title | uppercase}}</h1>
     <h2>{{introduction}}</h2>
+    <nav class="nav">
+      <a routerLink = '/main/calculate'>
+        <fa-icon [icon]="faCalculator"></fa-icon>
+      </a>
+      <a routerLink = '/main/loader'>
+        <fa-icon [icon]="faSave"></fa-icon>
+      </a>
+    </nav>
   </header>
+ 
   <router-outlet>
 
   </router-outlet>
   
+  <div *ngIf="message.errorMessages.length" class="error-message">
+    <li *ngFor="let message of message.errorMessages">
+      {{message}}
+    </li>
+    <div (click)="message.emptyMessages()" class="exit-error-message">Close</div>
+  </div>
   
   <footer><p> Milanche_74. All rigths reserved</p></footer>
   

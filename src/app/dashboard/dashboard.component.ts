@@ -13,12 +13,12 @@ export class DashboardComponent implements OnInit {
     private loader: LoaderService
   ) { }
 
-  loadTrainings() {
-    this.loader.setTabs(false);
-  }
-  presentCategories() {
-    this.loader.setTabs(true);
-  }
+  // loadTrainings() {
+  //   this.loader.setTabs(false);
+  // }
+  // presentCategories() {
+  //   this.loader.setTabs(true);
+  // }
 
   ngOnInit(): void {
   }

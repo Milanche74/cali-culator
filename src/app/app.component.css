@@ -22,7 +22,7 @@ h2 {
 
 header {
     text-align: center;
-    position: relative;
+    position: unset;
     grid-area: header;
 
 }
@@ -32,6 +32,20 @@ h1 {
     /* margin-bottom: 3vh; */
 }
 
+.nav {
+    position: absolute;
+    inset: 5vh 5vw auto auto;
+    display: flex;
+    gap: 5vw;
+    font-size: 3rem;
+}
+.nav a {
+    cursor: pointer;
+    color: var(--clr-light);
+}
+.nav a:hover {
+    color: var(--clr-light-active);
+}
 
 
 /* .link-active::after {
@@ -58,5 +72,37 @@ footer{
     font-family: 'Roboto Mono', monospace;
 }
 
+.error-message {
+    position: absolute;
+    inset: 25%;
+    background-color: var(--clr-light);
+    color: var(--txt-dark);
+    padding: 5vh 5vw;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+    justify-content: space-between;
+}
+
+.error-message li, .exit-error-message {
+    text-align: center;
+    font-size: 1.5rem;
+    font-size: clamp(.75rem, 4vh, 2rem);
+    list-style: none;
+    
+}
+.exit-error-message {
+    position: relative;
+    background-color: var(--clr-light);
+    border-radius: 10px;
+    border: 2px solid var(--txt-dark);
+    transition: all 0.4s ease;
+    cursor: pointer;
+    z-index: 1111;
+}
+.exit-error-message:hover {
+    background-color: var(--clr-light-active);
+}
 
 
