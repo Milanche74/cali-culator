@@ -187,10 +187,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 - Improve algorithm for static and strength training;
 - Make specific training calculations for form values that are lower then 10 and higher then 50;
 - Find a solution for reload bug (loosing data fetched from server);
-- Add navigation: loader and calculator;
-- If user saves training session of the excercise that already exist on the server, replace it with the new one;
-- Unsubscribe from Observables;
-- Implement form validation & error handling.
+- Make responsive
 
 ## Further help
 
