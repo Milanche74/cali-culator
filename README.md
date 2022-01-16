@@ -186,7 +186,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 - Improve algorithm for static and strength training;
 - Make specific training calculations for form values that are lower then 10 and higher then 50;
-- Find a solution for reload bug (loosing data fetched from server);
 - Make responsive
 
 ## Further help

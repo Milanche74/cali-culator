@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RoutesRecognized} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized} from '@angular/router';
 import { filter, pairwise } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 import { faCalculator, faSave } from '@fortawesome/free-solid-svg-icons';
 import { MessageServiceService } from './message.service';
+
 
 
 @Component({
@@ -23,6 +24,7 @@ export class AppComponent {
   
   constructor(
     private router:Router,
+    private route: ActivatedRoute,
     private loader: LoaderService,
     public message: MessageServiceService) {
 
@@ -35,16 +37,39 @@ export class AppComponent {
       this.loader.getPreviousUrl(this.previousUrl, this.currentUrl);
     })
 
-    // this.router.events
-    // .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
-    // .subscribe(event => {
-    //   if(
-    //     event.id === 1 &&
-    //     event.url === event.urlAfterRedirects
-    //   ) {
-    //     this.router.navigate(['/'])
-    //   }
-    // });
+    this.router.events
+    .pipe(filter((rs): rs is NavigationEnd => rs instanceof NavigationEnd))
+    .subscribe(event => {
+      if(
+        event.id === 1 &&
+        event.url === event.urlAfterRedirects
+        ) {
+        let currentUrlWhenReloaded = this.router.url  
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+         
+          if(currentUrlWhenReloaded.includes('training-table') || currentUrlWhenReloaded.includes('form')) {
+            this.loader.setActive(true);
+            this.loader.active = true;
+          } 
+
+          this.router.navigate([currentUrlWhenReloaded])
+          
+          if(currentUrlWhenReloaded.includes('calculate/training-table')) { //avoid empty tabs tableComp showing empty on reload for new training calc
+            this.router.navigate(['main/calculate'])
+            console.log('aaaa')
+          }
+        });
+      
+        
+        
+        // if(this.route.snapshot.firstChild?.routeConfig?.path === 'main/loader') {
+        //   console.log('prdeeez')
+        //   this.loader.getTabs('savedTrainings');
+        // }// else if(this.route.snapshot.firstChild?.routeConfig?.path === 'main/calculate') {
+        //   this.loader.getTabs('categories');
+        // }
+      }
+    });
    
   }
   

@@ -1,20 +1,24 @@
 
 
 
-<nav [ngClass]= "{'training-goal': !active, 'training-goal-active': active}"> 
-    <li  *ngFor="let tab of tabs; let i = index" >
-        <a *ngIf = "currentUrl === '/main/calculate'" (click)="openTab(tab)"
-         routerLink="form/{{tab}}" routerLinkActive = "link-active">{{tab}}
-        </a>
-        <a *ngIf = "currentUrl === '/main/loader'" (click)="openTab(tab)"
-          [ngClass] = "{'link-active': tab === tabActive}">{{tab}}
-        </a>
+<nav [ngClass]= "{'training-goal': !loader.active, 'training-goal-active': loader.active}"> 
+    <li  *ngFor="let tab of loader.tabs; let i = index" >
+        <a (click)="openTab(tab)" [ngClass]="{'link-active':tab===tabActive}">{{tab}}</a>
     </li>
-    <li *ngIf="tabsInitial.length > 4 && active" (click)="showSavedTrainings()"><a>+{{tabsInitial.length - 3}} More</a></li>
+    <li *ngIf="loader.tabsInitial.length > 4 && loader.active" (click)="showSavedTrainings()"><a>+{{loader.tabsInitial.length - 3}} More</a></li>
 </nav>
 
-<main [ngClass]="{'main-active':active}"> 
+<main [ngClass]="{'main-active':loader.active}"> 
     
     <router-outlet></router-outlet>
     
 </main>
+
+
+
+<!-- <a *ngIf = "route.snapshot.routeConfig?.path === 'main/calculate'" (click)="openTab(tab)"
+         routerLink="form/{{tab}}" routerLinkActive = "link-active">{{tab}}
+        </a>
+        <a *ngIf = "route.snapshot.routeConfig?.path === 'main/loader'" (click)="openTab(tab)"
+          [ngClass] = "{'link-active': tab === tabActive}">{{tab}}
+        </a> -->

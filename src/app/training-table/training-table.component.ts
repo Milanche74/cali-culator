@@ -1,18 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Training } from '../training';
 import { CalculatorService } from '../calculator.service';
 import { Location } from '@angular/common';
 import { LoaderService } from '../loader.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 
 @Component({
   selector: 'app-training-table',
   templateUrl: './training-table.component.html',
-  styleUrls: ['./training-table.component.css']
+  styleUrls: ['./training-table.component.css'] 
 })
-export class TrainingTableComponent implements OnInit {
+export class TrainingTableComponent implements OnInit, OnDestroy {
 
   trainingPlan: Training[] = [];
   trainingsArray: any[] = [];
@@ -23,19 +24,34 @@ export class TrainingTableComponent implements OnInit {
   index: number = 0;
   // previousUrl: string | null = '';
   // @Input() load: boolean = false;
+  subscription:Subscription;
 
   constructor(
     public calculator: CalculatorService,
     public location: Location,
-    public loader: LoaderService,
-    public route:ActivatedRoute) { }
+    private loader: LoaderService,
+    public route:ActivatedRoute)
+    {
+      this.subscription = loader.loadedTraining$.subscribe(
+        training => {
+          this.trainingPlan = training;
+          console.log('stiglo??')
+        }
+      )
+    }
 
   ngOnInit(): any {
     
     if(this.loader.urlHasLoader) {
       // console.log(history.state.data)
-      this.trainingPlan = history.state.data;
-     
+      // this.trainingPlan = history.state.data;
+      console.log('prodje table')
+      // this.subscription = this.loader.loadedTraining$.subscribe(
+      //   training => {
+      //     this.trainingPlan = training;
+      //     console.log('stiglo??')
+      //   }
+      // )
       
     } else {
       this.loger()
@@ -45,14 +61,14 @@ export class TrainingTableComponent implements OnInit {
     }  
   }
 
-  ngDoCheck() {
-    if(this.loader.urlHasLoader) { 
-      let excercise = this.route.snapshot.paramMap.get('name');
-      if( excercise !== this.loader.previousUrl) {
-      this.trainingPlan = history.state.data;
-      }
-    }
-  }
+  // ngDoCheck() {
+  //   if(this.loader.urlHasLoader) { 
+  //     let excercise = this.route.snapshot.paramMap.get('name');
+  //     if( excercise !== this.loader.previousUrl) {
+  //     this.trainingPlan = history.state.data;
+  //     }
+  //   }
+  // }
 
   facilitateTraining(training:Training[]) {
     // if(this.goal === 'reps') {}
@@ -120,5 +136,7 @@ export class TrainingTableComponent implements OnInit {
     this.calculator.loger()
   }
 
-
+  ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+  }
 }

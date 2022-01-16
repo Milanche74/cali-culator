@@ -52,10 +52,10 @@ export class FormComponent implements OnInit {
     if(goal === 'reps') {
       this.excercises = DISCIPLINES[0].filter(discipline => !discipline.aux);
       this.parameter = 'number of max reps';
-    } else if(goal === 'static holds'){
+    } else if(goal === 'static-holds'){
       this.excercises = DISCIPLINES[1].filter(discipline => !discipline.aux);
       this.parameter = 'max hold time in seconds'
-    } else if (goal==='street lifting') {
+    } else if (goal==='street-lifting') {
       this.excercises = DISCIPLINES[0].filter(discipline => !discipline.aux);
       this.excercises.name = `Weighted ${this.excercises.name}`;
       this.parameter = 'max weight as ORM in KGs'
@@ -84,8 +84,8 @@ export class FormComponent implements OnInit {
   getMarkerPosition(goal: string | null): any {
     switch(goal) {
       case 'reps': return '13%';
-      case 'static holds': return '48%';
-      case 'street lifting': return '83%';
+      case 'static-holds': return '48%';
+      case 'street-lifting': return '83%';
     }
   
   }

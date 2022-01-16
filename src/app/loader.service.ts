@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Training } from './training';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -19,6 +19,23 @@ export class LoaderService {
   public currentUrl: string = '';
   public urlHasLoader: boolean = false; 
 
+  public tabs: any[] = [];
+  public trainingsArray: any = [];
+  public tabsInitial: any = [];
+
+  public active: boolean = false;
+
+  private loadedTrainingSource = new Subject<Training[]>();
+  loadedTraining$ = this.loadedTrainingSource.asObservable();
+
+
+  sendTrainingToTableComp(training: Training[],tab:string|undefined) {
+
+    this.router.navigateByUrl(`main/loader/training-table/${tab}`).then(()=> {
+      this.loadedTrainingSource.next(training);
+      console.log('sent');
+    })
+  }
 
   getSavedTrainings(): Observable<any> {
     return this.http.get<any>(this.savedTrainingsUrl)
@@ -27,11 +44,62 @@ export class LoaderService {
     );
   }
 
-  presentCategories() {
+  getCategories() {
     return this.http.get<string[]>(this.categoriesUrl)
     .pipe(
       catchError(this.handleError<any>('presentCategories', []))
     );
+  }
+
+  getTabs(param: 'categories' | 'savedTrainings', slice: boolean) {
+    this.tabs = [];
+    this.tabsInitial = [];
+
+    if(param === 'categories') {
+      
+      this.getCategories().subscribe(data => this.tabs = data);
+      
+      } 
+    else if(param === 'savedTrainings') {
+
+      
+      this.getSavedTrainings().subscribe(training => {
+       
+        this.trainingsArray = training;
+        for(let i = 0; i < training.length; i++) {
+          this.tabs.push(training[i].data[0].excercise);
+        }      
+        this.tabsInitial = this.tabs;
+        if(slice) {
+          this.sliceTabs();
+        }
+        if(this.router.url.includes('training-table') && !this.router.url.includes('new')) { //reload-related check
+            let urlLastSubdirectory = this.router.url.split('/').pop() ;
+            let index = this.tabsInitial.indexOf(urlLastSubdirectory);
+    
+            this.trainingPlan = this.trainingsArray[index].data;    
+            this.sendTrainingToTableComp(this.trainingPlan, urlLastSubdirectory)
+
+        }
+
+      })
+    }
+  };
+
+  sliceTabs() {
+    this.tabs = this.tabs.slice(0,3);
+  }
+
+  tabsToInitial() {
+    this.tabs = this.tabsInitial;
+  }
+
+  // toggleActive() {
+  //   this.active = !this.active;
+  // }
+
+  setActive(x:boolean) {
+    this.active = x;
   }
 
   getPreviousUrl(prevUrl:string, currUrl:string) {
