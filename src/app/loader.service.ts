@@ -51,7 +51,7 @@ export class LoaderService {
     );
   }
 
-  getTabs(param: 'categories' | 'savedTrainings', slice: boolean) {
+  getTabs(param: 'categories' | 'savedTrainings', slice: boolean) { 
     this.tabs = [];
     this.tabsInitial = [];
 

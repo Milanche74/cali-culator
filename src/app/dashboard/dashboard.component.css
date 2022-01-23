@@ -1,6 +1,7 @@
 
 
-button,p {
+button,
+p {
     font-family: inherit;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -9,6 +10,7 @@ button,p {
     outline: none;
     border: none;
     border-radius: 10px;
+    max-width: 80vw;
 }
 
 button a {

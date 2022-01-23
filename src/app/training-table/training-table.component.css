@@ -6,7 +6,7 @@ table {
 
 
 th, td, button:nth-child(3) {
-    font-size: 1.5em;
+    font-size: var(--fts-med);
     color: var(--txt-dark);
     padding: 0.125rem 1rem;
     text-align: center;
@@ -32,6 +32,48 @@ thead tr th {
     top: -.5em;
 }
 
+.training-info {
+    padding-inline: 5vw;
+}
+
+h3 {
+    font-size: var(--fts-med);
+    color: var(--clr-light-active);
+    margin-bottom: 10vh;
+    text-align: center;
+}
+
+h4 {
+    font-size: var(--fts-med);
+    flex: 100%;
+}
+
+
+
+h4,
+p {
+    color: var(--txt-dark);
+    white-space: nowrap;
+    
+}
+
+.option {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, .7);
+    box-shadow: 0 0 5px 5px rgba(255, 255, 255, .3);
+    border-radius: 10px;
+    padding: 0 2vw;
+}
+.option p {
+    flex: 50%;
+}
+.option + .option {
+    margin-top: 5vh;
+}
+
 .buttons {
     display: flex;
     flex-direction: column;
@@ -43,7 +85,7 @@ thead tr th {
 }
 .buttons button {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.25em;
+    font-size: var(--fts-med);
     width: 13ch;
     background-color: var(--clr-light-active);
     border-radius: 5px;
@@ -88,3 +130,15 @@ button:hover {
 /* .buttons button:last-of-type {
     margin-top: .65em;
 } */
+
+@media screen and (max-width:400px) {
+    
+    .buttons {
+        margin-block: 5vh;
+    }
+
+    .buttons button {
+        font-size: 1rem;
+    }
+
+}

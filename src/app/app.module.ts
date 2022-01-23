@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule} from '@angular/cdk/layout'
 
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
@@ -29,7 +30,8 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

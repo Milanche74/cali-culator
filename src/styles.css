@@ -10,8 +10,9 @@ body {
     --clr-light-active: rgba(255,255,255,1);
     --txt-dark: #0F2027;
 
-    --fts-large: 4em;
-    --fts-med:1.5em
+    --fts-large: 4rem;
+    --fts-med: 1.5rem;
+    --fts-small: 1rem;
 }
 
 ::-webkit-scrollbar {
@@ -21,6 +22,7 @@ body {
 app-root {
     box-sizing: border-box;
     width: 100%;
+    /* min-height: 100vh; */
     min-height: 100vh;
     margin: 0;
     background: #0F2027;  /* fallback for old browsers */
@@ -29,20 +31,22 @@ app-root {
     
     display: grid;
     gap: .5em;
-    grid-template-rows: 2fr 6fr 1fr;
+    grid-template-rows: 2fr auto 1fr;
     grid-template-areas: 
     "header"
     "outlet"
     "footer";
     align-items: stretch;
     justify-content: center;
-    padding-top: 1em;
+    padding: 1em 5vw .2em;
     font-family: 'Roboto Mono', monospace;
 }
 
 app-dashboard, app-main {
     grid-area: outlet;
 }
+
+
 
 app-training-table {
     display: flex;
@@ -62,13 +66,41 @@ app-dashboard {
 }
 
 app-main {
-    
+
     display: grid;
     gap: 2em;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 10vh min-content;
     grid-template-areas: 
     "navbar"
     "main";
+    align-items: center;
+    justify-items: center;
 }
 
+@media screen and (max-width: 400px) {
+    :root {
+        --fts-large: 2rem;
+        --fts-med: 1.25rem;
+        --fts-small: .75rem;  
+    }
+    app-root {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    app-main {
+        display: flex;
+        flex-direction: column;
+    }
 
+    app-training-table {
+        flex-direction: column;
+        /* width: 100%;
+        padding-inline: 5%; */
+    }
+    app-dashboard {
+        transform: translateY(-10vh);
+    }
+    
+}

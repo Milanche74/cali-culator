@@ -1,6 +1,6 @@
 
 
- <table>
+ <table *ngIf="!isPortrait">
     <thead>
         <tr>
             <th scope="col">{{trainingPlan[0].excercise}}</th>
@@ -34,6 +34,34 @@
         </tr>
     </tbody>
 </table>
+
+<div class="training-info" *ngIf="isPortrait">
+    
+    <h3>Excercise: {{trainingPlan[0].excercise}}</h3>
+    
+    <div class="option">
+      <h4>Option 1</h4>
+      <p>Sets: {{trainingPlan[0].sets}}</p>
+      <p>Reps: {{trainingPlan[0].reps}}</p>
+      <p>Rest time: {{trainingPlan[0].restTime}}</p>
+      <p>Volume: {{trainingPlan[0].volume}}</p> 
+    </div>
+    <div class="option">
+        <h4>Option 2</h4>
+        <p>Sets: {{trainingPlan[1].sets}}</p>
+        <p>Reps: {{trainingPlan[1].reps}}</p>
+        <p>Rest time: {{trainingPlan[1].restTime}}</p>
+        <p>Volume: {{trainingPlan[1].volume}}</p>   
+    </div>
+    <div class="option">
+        <h4>Option 3</h4>
+      <p>Sets: {{trainingPlan[2].sets}}</p>
+      <p>Reps: {{trainingPlan[2].reps}}</p>
+      <p>Rest time: {{trainingPlan[2].restTime}}</p>
+      <p>Volume: {{trainingPlan[2].volume}}</p> 
+    </div>
+
+</div>
 
 <div class="buttons">
     <div class="button-row1"> 

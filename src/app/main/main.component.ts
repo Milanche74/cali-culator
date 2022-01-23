@@ -16,7 +16,7 @@ export class MainComponent implements OnInit{
 
   //trainingGoals: any[] = [{name: 'reps', state: false}, {name: 'static holds', state: false}, {name: 'street lifting', state: false}];
   tabs: any[] = this.loader.tabs;
-
+  height: string = `${this.loader.tabs.length * 10}vh`;
   urlHasLoader:boolean = false;
   trainingsArray: any[] = this.loader.trainingsArray; 
   trainingPlan: Training[] = [];
@@ -27,7 +27,6 @@ export class MainComponent implements OnInit{
 
   ngOnInit(): void {
 
-    
      
     if(this.router.url.includes('form') || this.router.url.includes('training-table')) { //reload-related check
       this.loader.active = true;
@@ -68,6 +67,7 @@ export class MainComponent implements OnInit{
 
 
   openTab(tab:string): void {
+    
     this.loader.active = true;
     
     this.tabActive = tab;

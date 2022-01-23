@@ -15,7 +15,9 @@
 
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
     color: rgb(255, 255, 255);
     font-family: 'Roboto Mono', monospace;
 }
@@ -28,8 +30,16 @@ header {
 }
 
 h1 {
-    font-size: 4em;
+    font-size: var(--fts-large);
+    
     /* margin-bottom: 3vh; */
+}
+
+
+
+h2 {
+    padding-inline: 5vw;
+    font-weight: 500;
 }
 
 .nav {
@@ -37,7 +47,7 @@ h1 {
     inset: 5vh 5vw auto auto;
     display: flex;
     gap: 5vw;
-    font-size: 3rem;
+    font-size: var(--fts-large);
 }
 .nav a {
     cursor: pointer;
@@ -69,7 +79,9 @@ footer{
     /* position: relative;
     top: 3vh; */
     color: rgba(255,255,255,0.6);
+    font-size: var(--fts-small);
     font-family: 'Roboto Mono', monospace;
+    margin-inline: auto;
 }
 
 .error-message {
@@ -105,4 +117,16 @@ footer{
     background-color: var(--clr-light-active);
 }
 
-
+@media screen and (max-width: 425px) {
+    h1 {
+        text-align: left;
+    }
+    .nav {
+        font-size: var(--fts-med);
+    }
+    .error-message {
+        inset: 10%;
+        word-break: break-all;
+        background-color: var(--clr-light-active);
+    }
+}

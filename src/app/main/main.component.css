@@ -13,12 +13,12 @@ nav {
     grid-area: navbar;
 }
 .training-goal {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    /* top: 50%;
     left: 50%;
-    transform: translate(-50%,-40%);
-    max-height: 50vh;
-    min-width: 50vw;
+    transform: translate(-50%,-40%); */
+    /* max-height: 50vh; */
+    max-width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr ;
     grid-auto-flow: row;
@@ -28,6 +28,7 @@ nav {
     /* transition: all 1s ease; */
     
 }
+
 
 .training-goal li:last-child:nth-child(odd) {
     grid-column: span 2;
@@ -40,9 +41,7 @@ nav {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-   
+    justify-content: center;  
     
 }
 
@@ -67,7 +66,7 @@ nav {
     font-weight: 900;
     text-transform: uppercase;
     /* text-align: center; */
-    font-size: 1.5em;
+    font-size: var(--fts-med);
     letter-spacing: 0.075em;
     text-align: center;
     cursor: pointer;
@@ -118,4 +117,36 @@ nav {
     /* border-bottom: 5vh solid rgb(255, 255, 255);
     margin-bottom: -5vh; */
                 
+}
+
+
+
+
+
+
+@media screen and (max-width: 400px) {
+    .main-active {
+        width: 100%;
+        padding-inline: 5%;
+    }
+    .training-goal {
+        display: flex;
+        flex-direction: column;
+    }
+    .training-goal-active {
+        width: 90vw;
+    }
+    .training-goal li {
+        width: 100%;
+    }
+    .training-goal-active a {
+        font-size: var(--fts-small);
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        
+    }
+
 }

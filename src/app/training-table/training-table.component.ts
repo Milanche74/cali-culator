@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { LoaderService } from '../loader.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 
 
@@ -24,13 +25,15 @@ export class TrainingTableComponent implements OnInit, OnDestroy {
   index: number = 0;
   // previousUrl: string | null = '';
   // @Input() load: boolean = false;
-  subscription:Subscription;
+  subscription: Subscription;
+  isPortrait: boolean = false;
 
   constructor(
     public calculator: CalculatorService,
     public location: Location,
-    private loader: LoaderService,
-    public route:ActivatedRoute)
+    public loader: LoaderService,
+    public route: ActivatedRoute,
+    private breakpointObserver: BreakpointObserver)
     {
       this.subscription = loader.loadedTraining$.subscribe(
         training => {
@@ -42,6 +45,8 @@ export class TrainingTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     
+    
+
     if(this.loader.urlHasLoader) {
       // console.log(history.state.data)
       // this.trainingPlan = history.state.data;
@@ -58,8 +63,21 @@ export class TrainingTableComponent implements OnInit, OnDestroy {
       this.trainingPlan = this.calculator.trainingPlan;
       this.goal = this.calculator.goal;
       // console.log(this.goal);
-    }  
+    } 
+    
+    this.breakpointObserver
+    .observe(['(min-width: 400px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        this.isPortrait = false;
+      } else {
+        this.isPortrait = true;
+      }
+      console.log(state)
+    });
   }
+
+  
 
   // ngDoCheck() {
   //   if(this.loader.urlHasLoader) { 

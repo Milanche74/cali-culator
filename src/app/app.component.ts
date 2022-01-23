@@ -7,12 +7,13 @@ import { MessageServiceService } from './message.service';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html', 
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   title = 'caliculator';
   introduction = 'Organize your training'; 
@@ -26,14 +27,15 @@ export class AppComponent {
     private router:Router,
     private route: ActivatedRoute,
     private loader: LoaderService,
-    public message: MessageServiceService) {
+    public message: MessageServiceService)
+     {
 
     // listen for page reload
     this.router.events
     .pipe(filter((evt:any)=>evt instanceof RoutesRecognized || evt instanceof NavigationEnd ), pairwise())
     .subscribe((events: RoutesRecognized[]) => {
       this.previousUrl = events[0].urlAfterRedirects; 
-      this.currentUrl = events[1].urlAfterRedirects; 
+      this.currentUrl = events[1].urlAfterRedirects;  
       this.loader.getPreviousUrl(this.previousUrl, this.currentUrl);
     })
 
@@ -60,17 +62,14 @@ export class AppComponent {
           }
         });
       
-        
-        
-        // if(this.route.snapshot.firstChild?.routeConfig?.path === 'main/loader') {
-        //   console.log('prdeeez')
-        //   this.loader.getTabs('savedTrainings');
-        // }// else if(this.route.snapshot.firstChild?.routeConfig?.path === 'main/calculate') {
-        //   this.loader.getTabs('categories');
-        // }
       }
     });
    
+  }
+
+
+  ngOnInit(): void {
+    
   }
   
   // emptyMessages() {

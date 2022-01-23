@@ -1,7 +1,7 @@
 
 
 
-<nav [ngClass]= "{'training-goal': !loader.active, 'training-goal-active': loader.active}"> 
+<nav [ngClass]= "{'training-goal': !loader.active, 'training-goal-active': loader.active}" > 
     <li  *ngFor="let tab of loader.tabs; let i = index" >
         <a (click)="openTab(tab)" [ngClass]="{'link-active':tab===tabActive}">{{tab}}</a>
     </li>
